@@ -70,10 +70,12 @@ Namespace Q109817
 			End Get
 		End Property
 
-		Public Overrides Sub ChangeFieldExpanded(ByVal field As PivotGridFieldBase, ByVal expanded As Boolean)
-			MyBase.ChangeFieldExpanded(field, expanded)
+		Public Overrides Function ChangeFieldExpanded(field As PivotGridFieldBase, expanded As Boolean) As Boolean
+			Dim result As Boolean = MyBase.ChangeFieldExpanded(field, expanded)
 			PivotGrid.RaiseFieldExpandedAll(field, expanded)
-		End Sub
+			Return result
+		End Function
+
 	End Class
 
 	Public Class FieldExpandedEventArgs

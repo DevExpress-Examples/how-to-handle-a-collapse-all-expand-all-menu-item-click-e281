@@ -57,9 +57,10 @@ namespace Q109817 {
 
 		public new PivotGridControlEx PivotGrid { get { return (PivotGridControlEx)base.PivotGrid; } }
 
-		public override void ChangeFieldExpanded(PivotGridFieldBase field, bool expanded) {
-			base.ChangeFieldExpanded(field, expanded);
+		public override bool ChangeFieldExpanded(PivotGridFieldBase field, bool expanded) {
+			bool result = base.ChangeFieldExpanded(field, expanded);
 			PivotGrid.RaiseFieldExpandedAll(field, expanded);
+			return result;
 		}
 	}
 
